@@ -90,7 +90,7 @@ Why?
 
 a. Lists the languages the app will support.
 
-b. Ensures that AppCompatDelegate can persist and restore language settings when the app restarts.
+b. Ensures that AppCompatDelegate can persist and restore language settings when the app restarts to support legacy devices of API level 32 or lower.  The min API level for this app is 29.
 
 c. Ensures the app will be listed in this settings screen specifying the currently selected language.
 
@@ -102,7 +102,7 @@ Why?
 
 Maintains a clear separation between data, business logic, and UI.
 
-a. MainActivity does not need to know how the LanguageViewModel is created or that it even requires a LanguageRepository.
+a. MainActivity does not need to know how the LanguageViewModel is created.
 
 b. MainActivity just focuses purely on lifecycle and UI setup.
 
