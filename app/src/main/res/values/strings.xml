@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LanguageSelection</string>
+    <string name="greeting">Hello, you have selected English.</string>
+    <string name="lang_en">English</string>
+    <string name="lang_es">Spanish</string>
+    <string name="lang_sv">Swedish</string>
+    <string name="lang_fi">Finnish</string>
+</resources>
