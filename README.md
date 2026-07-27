@@ -145,3 +145,22 @@ The Android application remains to be implemented in Jetpack Compose and allowin
 Optional usage of legacy layouts are not needed.
 
 The resulting structure provides a clear separation between data, business logic, and UI.
+
+## Screenshots:
+
+### English is selected
+
+<img width="464" height="461" alt="LanguageSelection_screenshot_English" src="https://github.com/user-attachments/assets/3c07ae5f-f879-44e5-aaef-8df36d8324fa" />
+
+### Spanish is selected
+
+<img width="464" height="461" alt="LanguageSelection_screenshot_Espanol" src="https://github.com/user-attachments/assets/b69c0a86-e4f2-4e8c-a863-c65960d5c0df" />
+
+### Swedish is selected
+
+<img width="464" height="461" alt="LanguageSelection_screenshot_Svenska" src="https://github.com/user-attachments/assets/1448e57c-3ccd-4ac4-839a-deb276fcc988" />
+
+### Finnish is selected
+
+<img width="464" height="461" alt="LanguageSelection_screenshot_Suomi" src="https://github.com/user-attachments/assets/fbbd466e-97da-4aff-9a51-aac6e2c5696b" />
+
