@@ -1,6 +1,5 @@
 package com.example.languageselection
 
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -14,8 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.core.os.LocaleListCompat
 import com.example.languageselection.data.repository.LanguageRepositoryImpl
 import com.example.languageselection.ui.LanguageSelectionScreen
-import com.example.languageselection.ui.viewmodel.LanguageViewModel
 import com.example.languageselection.ui.theme.LanguageSelectionTheme
+import com.example.languageselection.ui.viewmodel.LanguageViewModel
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +29,6 @@ class MainActivity : AppCompatActivity() {
         val repository = LanguageRepositoryImpl()
         val viewModel = LanguageViewModel.provide(this, repository)
 
-        //viewModel.loadLanguages()
-
         enableEdgeToEdge()
         setContent {
             LanguageSelectionTheme {
@@ -43,9 +40,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-//    override fun onConfigurationChanged(newConfig: Configuration) {
-//        super.onConfigurationChanged(newConfig)
-//        viewModel.loadLanguages()
-//    }
 }
