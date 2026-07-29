@@ -1,5 +1,6 @@
 package com.example.languageselection.ui
 
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,6 +14,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -28,6 +30,15 @@ fun LanguageSelectionScreen(viewModel: LanguageViewModel) {
     val languages by viewModel.languages.collectAsState()
     val currentLocales = AppCompatDelegate.getApplicationLocales()
     val currentLanguageCode = if (!currentLocales.isEmpty) currentLocales.get(0)?.language else "en"
+
+    Log.d("LanguageSelectionScreen","In LanguageSelectionScreen; currentLanguageCode=$currentLanguageCode; languages=${languages}")
+
+    // LanguageSelectionScreen is called after MainActivity recreation due to configuration change.
+    // Need to launch a new coroutine to asynchronously call viewModel.loadLanguages()
+    //   to get the list re-ordered with the current locale as the 1st item.
+    LaunchedEffect(Unit) {
+        viewModel.loadLanguages()
+    }
 
     Column(
         modifier = Modifier
@@ -46,11 +57,14 @@ fun LanguageSelectionScreen(viewModel: LanguageViewModel) {
                     language = language,
                     isSelected = language.code == currentLanguageCode
                 ) {
+                    Log.d("LanguageSelectionScreen","set language=$language")
                     viewModel.selectLanguage(language)
                 }
                 HorizontalDivider()
             }
         }
+
+        Log.d("LanguageSelectionScreen","Out LanguageSelectionScreen")
     }
 }
 

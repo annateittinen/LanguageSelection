@@ -1,5 +1,6 @@
 package com.example.languageselection.ui.viewmodel
 
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
@@ -19,23 +20,52 @@ class LanguageViewModel(private val repository: LanguageRepository) : ViewModel(
     val languages: StateFlow<List<Language>> = _languages.asStateFlow()
 
     init {
-        loadLanguages()
+        // No need to call loadLanguages() upon View construction.
+        // LanguageSelectionScreen will call the method upon re-composing due to configuration change.
+        //loadLanguages()
     }
 
-    private fun loadLanguages() {
+    /**
+     * Get the list with the current locale re-ordered as the 1st item.
+     */
+    public fun loadLanguages() {
         viewModelScope.launch {
             repository.getAvailableLanguages().collect {
-                _languages.value = it
+
+                val ml = it.toMutableList()
+
+                // re-order: place the current the system locale at the 1st item in the list
+                val currentLocales = AppCompatDelegate.getApplicationLocales()
+                val currentLanguageCode = if (!currentLocales.isEmpty) currentLocales.get(0)?.language else "en"
+                val i = it.indexOfFirst {
+                    it.code == currentLanguageCode
+                }
+                // move item from index i to position 0
+                if (i > 0) {
+                    ml.removeAt(i)
+                    ml.add(0, it[i])
+                }
+                Log.d(TAG, "ml=${ml}")
+
+                // update the MutableStateFlow with the re-ordered list
+                _languages.value = ml
             }
         }
     }
 
+    /**
+     * Trigger the system-level configuration change per the language.
+     * No-op behavior if the new LocaleListCompat is the same as the currently active one.
+     */
     fun selectLanguage(language: Language) {
         val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(language.code)
         AppCompatDelegate.setApplicationLocales(appLocale)
     }
 
     companion object {
+
+        const val TAG = "LanguageViewModel"
+
         // API for the View layer to create the LanguageViewModel,encapsulating ViewModelProvider logic.
         fun provide(owner: ViewModelStoreOwner, repository: LanguageRepository): LanguageViewModel {
             return ViewModelProvider(owner, Factory(repository))[LanguageViewModel::class.java]
