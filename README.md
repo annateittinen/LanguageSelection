@@ -10,6 +10,8 @@ Constraints: Use a standard layered architecture with a clear separation of conc
 
 Complexity: Basic. Code must compile and run in a standard emulator.
 
+Additional requirement: Put the selected language at the top of the list.
+
 
 ### Approach :
 
@@ -150,17 +152,21 @@ The resulting structure provides a clear separation between data, business logic
 
 ### English is selected
 
-<img width="464" height="461" alt="LanguageSelection_screenshot_English" src="https://github.com/user-attachments/assets/3c07ae5f-f879-44e5-aaef-8df36d8324fa" />
+<img width="424" height="464" alt="Screenshot 2026-07-30 7 57 19 PM_english" src="https://github.com/user-attachments/assets/b6335357-1873-4c2a-bb61-25a16de024dc" />
+
 
 ### Spanish is selected
 
-<img width="464" height="461" alt="LanguageSelection_screenshot_Espanol" src="https://github.com/user-attachments/assets/b69c0a86-e4f2-4e8c-a863-c65960d5c0df" />
+<img width="424" height="464" alt="Screenshot 2026-07-30 7 57 36 PM_spanish" src="https://github.com/user-attachments/assets/4069eeb4-1c2d-41e2-9e6b-086e5c1edd22" />
+
 
 ### Swedish is selected
 
-<img width="464" height="461" alt="LanguageSelection_screenshot_Svenska" src="https://github.com/user-attachments/assets/1448e57c-3ccd-4ac4-839a-deb276fcc988" />
+<img width="424" height="464" alt="Screenshot 2026-07-30 7 57 48 PM_swedish" src="https://github.com/user-attachments/assets/3cf3a6dd-0fa9-4683-9c76-a63d1caa0872" />
 
 ### Finnish is selected
 
-<img width="464" height="461" alt="LanguageSelection_screenshot_Suomi" src="https://github.com/user-attachments/assets/fbbd466e-97da-4aff-9a51-aac6e2c5696b" />
+<img width="424" height="464" alt="Screenshot 2026-07-30 7 58 02 PM_finnish" src="https://github.com/user-attachments/assets/25126fa5-dfd3-4256-b476-06ea2f9a018b" />
+
+
 
